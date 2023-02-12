@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .board {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          grid-gap: 10px;
+          background-color: #eee;
+          width: 300px;
+          height: 300px;
+          margin: 50px auto;
+        }
+  
+        .cell {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 36px;
+          font-weight: bold;
+        }
+  
+        .x {
+          color: red;
+        }
+  
+        .o {
+          color: blue;
+        }
+      </style>
+</head>
+  <body>
+    <div class="board">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
+    <button id="resetBtn">Reset</button>
+
+<script>
+  const resetBtn = document.querySelector('#resetBtn');
+
+  resetBtn.addEventListener('click', function() {
+    for (const cell of cells) {
+      cell.textContent = '';
+    }
+
+    currentPlayer = 'x';
+  });
+</script>
+
+
+    <script>
+      const board = document.querySelector('.board');
+      const cells = board.querySelectorAll('.cell');
+      let currentPlayer = 'x';
+
+      cells.forEach(cell => {
+        cell.addEventListener('click', function() {
+          if (this.textContent === '') {
+            this.textContent = currentPlayer;
+
+            if (checkForWin()) {
+              alert(currentPlayer + ' wins!');
+            } else if (checkForDraw()) {
+              alert('Draw!');
+            } else {
+              currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+            }
+          }
+        });
+      });
+
+      function checkForWin() {
+        const combinations = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6]
+        ];
+
+        for (const combination of combinations) {
+          if (cells[combination[0]].textContent === currentPlayer &&
+              cells[combination[1]].textContent === currentPlayer &&
+              cells[combination[2]].textContent === currentPlayer) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+
+      function checkForDraw() {
+        for (const cell of cells) {
+          if (cell.textContent === '') {
+            return false;
+          }
+        }
+
+        return true;
+      }
+    </script>
+</body>
+</html>
