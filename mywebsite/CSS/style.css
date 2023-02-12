@@ -1,23 +1,31 @@
-
-/* header,main{
-    padding-left:80px ;
-    padding-right: 80px;
-} */
-
-
-
-.htmlIcon{
-    width: 40px;
-    margin-bottom: 6px;
+*{
+    margin: 0;
+    padding: 0;
 }
 
-.cssIcon{
-    width: 40px;
-    margin-bottom: 6px;
+.intro{
+    font-size: 3.5rem;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 100px;    
 }
 
-.javascriptIcon{
-    width: 40px;
-    margin-bottom: 6px;
+.profile{
+    width:300px;
+    margin-top: 20px;
+}
+
+@media (max-width:991px){
+    .intro{
+        text-align: center;
+        padding-left: 0;
+    }
+}
+
+.htmlIcon,.cssIcon,.javascriptIcon,.githubIcon,.springIcon
+{
+    width: 50px;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
