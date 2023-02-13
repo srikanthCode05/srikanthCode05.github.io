@@ -29,3 +29,10 @@
     margin-bottom: 7px;
 }
 
+#hibernate{
+    background-color: rgb(191, 118, 118) !important;
+}
+
+img {
+    pointer-events: none;
+}
