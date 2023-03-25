@@ -36,3 +36,8 @@
 img {
     pointer-events: none;
 }
+
+.this-row{
+    padding-left: 50px;
+    padding-right: 50px;
+}
